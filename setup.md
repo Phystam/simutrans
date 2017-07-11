@@ -25,7 +25,7 @@ gitを使って開発を進めます。
     COLOUR_DEPTH =16 #このまま使う  
     OSTYPE = mingw #winはmingwです  
     DEBUG = 3 #ログをたくさん出す  
-    WITH_REVISION = 8128 #バージョン。とりあえずテキトーでよい。  
+    WITH_REVISION = 8128 #バージョン。とりあえずテキトーでよい。  
     WIN32_CONSOLE = 1  
     #winでコマンドプロンプトを出す  
     MULTI_THREAD = 1 #マルチスレッドON  
