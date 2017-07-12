@@ -22,7 +22,7 @@ Branchの構成は図3のようになっています。「Seminar」ブランチ
 ![図3](images/3.png "図3")  
 
 ## コンパイル方法
-(参考：http://japanese.simutrans.com/index.php?%B3%AB%C8%AF%2F%A5%D3%A5%EB%A5%C9%CA%FD%CB%A1 )  
+(参考：http://japanese.simutrans.com/index.php?%B3%AB%C8%AF%2F%A5%D3%A5%EB%A5%C9%CA%FD%CB%A1 )←ここに従うのが一番良いかも。  
 1. msys2をインストール。（ http://www.msys2.org/ ）原則としてx86_64とついてるやつをインストールしましょう。
 2. msys2を起動し（64bit版を起動する） `pacman -Syuu` を実行する。  
 「msysを閉じろ」というメッセージが出てくるので一度閉じるボタンで閉じてmsys2をもう一度起動する。その後もう一度`pacman -Syuu` を実行する。  
