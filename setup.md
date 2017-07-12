@@ -8,7 +8,13 @@ GitHubのhimeshi-hob/simutransリポジトリの然るべきブランチ（「se
 （わかる人向けの説明終わり）
 
 ### gitクライアントのインストール
-
+まずは（お持ちでない方は）GitHubのアカウントを作りましょう。すでにお持ちの方は新しく作る必要はありません.  
+後で説明しますが、共同開発のためにアカウントをCollaboratorに登録する必要があるのでtwitter @himeshi_hobにDMか何かでアカウントのユーザー名を教えてください.  
+クライアントとしてGitHub Desktopを使用します。https://desktop.github.com/ から「Download for Windows」を選択してダウンロードしてください.  
+インストーラーを立ち上げたら「Sign into GitHub.com」でログインしてください。あとは指示に従ってインストールを完了してください.  
+インストールが完了するとGitHub Desktopが起動して図1のような画面が表示されるはずです.  
+「Clone a repository」ボタンを選択すると図2のような画面が表示されるので「https://github.com/himeshi-hob/simutrans.git 」と入力してCloneしてください.  
+hoge
 
 ## コンパイル方法
 1. msys2をインストール。（ http://www.msys2.org/ ）原則としてx86_64とついてるやつをインストールしましょう。
