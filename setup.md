@@ -1,5 +1,5 @@
 # Simutrans 開発セットアップ
-まだ書き途中です。全然検証してません。
+検証したら全然うまくいかないので書き直し中orz  
 
 ## gitの整備
 gitを使って開発を進めます。  
@@ -22,6 +22,7 @@ Branchの構成は図3のようになっています。「Seminar」ブランチ
 ![図3](images/3.png "図3")  
 
 ## コンパイル方法
+(参考：http://japanese.simutrans.com/index.php?%B3%AB%C8%AF%2F%A5%D3%A5%EB%A5%C9%CA%FD%CB%A1 )  
 1. msys2をインストール。（ http://www.msys2.org/ ）原則としてx86_64とついてるやつをインストールしましょう。
 2. msys2を起動し（64bit版を起動する） `pacman -Syuu` を実行する。  
 「msysを閉じろ」というメッセージが出てくるので一度閉じるボタンで閉じてmsys2をもう一度起動する。その後もう一度`pacman -Syuu` を実行する。  
@@ -35,6 +36,11 @@ Branchの構成は図3のようになっています。「Seminar」ブランチ
 今回はいらないがSDL版を作りたい時は以下も追加で実行する。   
 `pacman -S SDL`  
 `pacman -S SDL2`   
+4. MinGWをインストールする。（http://mingw.org/ ）  
+5. http://sourceforge.net/project/showfiles.php?group_id=2435 からbzip2-1.0.5-2-mingw32-dev.tar.gzとlibz-1.2.3-1-mingw32-dev.tar.gzをダウンロードする。  
+リンク先から「MinGW」,「Extension」,「zlibもしくはbzip2」の順にフォルダを開けていけばたどり着ける。  
+ダウンロードしたファイルをTGZ形式を解凍できるツールで解凍して、中のincludeとlibをMinGWのインストール先(デフォルトではC:\MinGW")に上書きコピーする。（二重圧縮されている。）  
+http://libunicows.sourceforge.net/ からlibunicows-1.1.1-mingw32.zipをダウンロードして、 libunicows.aをMinGWのインストール先のlib内にコピー。
 4. msys2の**32bit版**を起動し、cdコマンドでソースコードのフォルダに移動する。  
 例：ソースコードのフォルダがC:\users\himeshi\desktop\simutrans である場合  
 `cd C:`  
