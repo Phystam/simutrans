@@ -10,7 +10,7 @@ GitHubのhimeshi-hob/simutransリポジトリの然るべきブランチ（「se
 
 ### gitクライアントのインストール
 まずは（お持ちでない方は）GitHubのアカウントを作りましょう。すでにお持ちの方は新しく作る必要はありません.  
-後で説明しますが、共同開発のためにアカウントをCollaboratorに登録する必要があるのでtwitter @himeshi_hobにDMか何かでアカウントのユーザー名を教えてください.  
+後で説明しますが、**共同開発のためにアカウントをCollaboratorに登録する必要があるのでtwitter @himeshi_hobにDMか何かでアカウントのユーザー名を教えてください.**  
 クライアントとしてGitHub Desktopを使用します。https://desktop.github.com/ から「Download for Windows」を選択してダウンロードしてください.  
 インストーラーを立ち上げたら「Sign into GitHub.com」でログインしてください。あとは指示に従ってインストールを完了してください.  
 インストールが完了するとGitHub Desktopが起動して図1のような画面が表示されるはずです.  
