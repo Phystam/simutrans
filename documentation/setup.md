@@ -1,5 +1,6 @@
 # Simutrans 開発セットアップ
-検証したら全然うまくいかないので書き直し中orz  
+
+うまくいかなかったりわからないことがありましたら遠慮なく@himeshi_hobに連絡してください。
 
 ## gitの整備
 gitを使って開発を進めます。  
@@ -24,30 +25,25 @@ Branchの構成は図3のようになっています。「Seminar」ブランチ
 ## コンパイル方法
 (参考：http://japanese.simutrans.com/index.php?%B3%AB%C8%AF%2F%A5%D3%A5%EB%A5%C9%CA%FD%CB%A1 )←ここに従うのが一番良いかも。  
 1. MinGWをインストールする。（http://mingw.org/download/installer ）  
-MinGW Installation Managerが起動するので左側タブ「Basic Setup」を選択し、右側から「mingw32-base」「mingw32-gcc-g++」を右クリックで選択。「Mark for Installation」を選び、画面上部のタブから「Installation」→「Apply Changes」→「Apply」でインストールする。
-2. http://sourceforge.net/project/showfiles.php?group_id=2435 からbzip2-1.0.5-2-mingw32-dev.tar.gzとlibz-1.2.3-1-mingw32-dev.tar.gzをダウンロードする。  
-リンク先から「MinGW」,「Extension」,「zlibもしくはbzip2」の順にフォルダを開けていけばたどり着ける。  
-ダウンロードしたファイルをTGZ形式を解凍できるツールで解凍して、中のincludeとlibをMinGWのインストール先(デフォルトではC:\MinGW")に上書きコピーする。（二重圧縮されている。）  
-http://libunicows.sourceforge.net/ からlibunicows-1.1.1-mingw32.zipをダウンロードして、 libunicows.aをMinGWのインストール先のlib内にコピー。
-1. msys2をインストール。（ http://www.msys2.org/ ）原則としてx86_64とついてるやつをインストールしましょう。
-2. msys2を起動し（64bit版を起動する） `pacman -Syuu` を実行する。  
+MinGW Installation Managerが起動するので左側タブ「Basic Setup」を選択し、右側から「mingw32-base」「mingw32-gcc-g++」を右クリックで選択。「Mark for Installation」を選び、画面上部のタブから「Installation」→「Apply Changes」→「Apply」でインストールする。  
+2. msys2をインストール。（ http://www.msys2.org/ ）原則としてx86_64とついてるやつをインストールしましょう。
+3. msys2を起動し（64bit版を起動する） `pacman -Syuu` を実行する。  
 「msysを閉じろ」というメッセージが出てくるので一度閉じるボタンで閉じてmsys2をもう一度起動する。その後もう一度`pacman -Syuu` を実行する。  
 アップデート対象がなくなるまで`pacman -Syuu`を繰り返し実行する。  
 （コレでmsys2のいろいろがアプデされる。）  
-3. 以下のコマンドを順に実行する。  
-`pacman -S make`  
-`pacman -S gcc`  
-`pacman -S mingw-w64-i686-libpng`  
-`pacman -S mingw-w64-i686-pkg-config`  
+4. 以下のコマンドを実行する。  
+`pacman -S make gcc mingw-w64-i686-libpng mingw-w64-i686-pkg-config tar`  
 今回はいらないがSDL版を作りたい時は以下も追加で実行する。   
-`pacman -S SDL`  
-`pacman -S SDL2`   
+`pacman -S SDL SDL2`  
+5. bzip2(https://sourceforge.net/projects/mingw/files/MinGW/Extension/bzip2/bzip2-1.0.5-2/bzip2-1.0.5-2-mingw32-dev.tar.gz/download )とzlib
+(https://sourceforge.net/projects/mingw/files/MinGW/Extension/zlib/zlib-1.2.3-1-mingw32/libz-1.2.3-1-mingw32-dev.tar.gz/download )をダウンロードする。  
+ダウンロードしたファイルをTGZ形式を解凍できるツールで解凍して、中のincludeとlibをMinGWのインストール先(デフォルトではC:\MinGW")に上書きコピーする。（二重圧縮されている。）  
+tarファイルの展開には7-zipなどの展開ソフトを使ってもいいし、ダウンロードしたファイルがあるディレクトリにmsys2上で移動して`tar xvf libz-1.2.3-1-mingw32-dev.tar.gz`と打つと展開してくれる。なおファイル名は途中まで入力してtabキーを押せば残りは自動で埋めてくれるので活用しよう。
+http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.1-mingw32.zip からlibunicows-1.1.1-mingw32.zipをダウンロードして、 libunicows.aをMinGWのインストール先のlib内にコピー。  
 
-4. msys2の**32bit版**を起動し、cdコマンドでソースコードのフォルダに移動する。  
+5. msys2の**32bit版**を起動し、cdコマンドでソースコードのフォルダに移動する。  
 例：ソースコードのフォルダがC:\users\himeshi\desktop\simutrans である場合  
-`cd C:`  
-`cd users/himeshi/desktop/simutrans`  
-(msys2ではCドライブは外付けドライブとして認識されるらしい。)  
+`cd /c/users/himeshi/desktop/simutrans`  
 5. config.defaultを作る。以下の記述をエディタにコピペし、ソースコードフォルダ（のトップディレクトリ）に「config.default」という名前で保存する。  
 
     BACKEND = gdi #どのライブラリ  
@@ -64,9 +60,11 @@ http://libunicows.sourceforge.net/ からlibunicows-1.1.1-mingw32.zipをダウ�
     NETTOOL_PROGDIR = $(shell pwd)  
     PROGDIR  = $(shell pwd)  
     
-6. コマンド`make -j4` を実行（-j4で4並列でコンパイルしてくれる。）
-7. 「sim.exe」が生成されるのでpakとかいろいろ入ってるフォルダにつっこんで起動してみましょう。
+6. コマンド`make -j4` を実行（-j4で4並列でコンパイルしてくれる。）  
+7. 「sim.exe」が生成されるのでpakとかいろいろ入ってるフォルダにつっこんで起動してみましょう。  
+  
+これでうまくいくはずなんですが検証してみたらzlib.hが読み込めないorz
 
-## デバッガを使おう
-sim.exeをそのまま起動すると例えばNullPointer Access等でプログラムが停止した時「プログラムが動作を停止しました」としか出てこなくてわけがわかりません。しかしgdbというデバッガを経由して起動してあげると「どこが悪いのか」や「どうしてソレが悪いのか」「その時の変数がどうなっているか」が一瞬でわかります。
-hoge
+## デバッガを使おう(ここは課題ではありません。)
+sim.exeをそのまま起動すると例えばNullPointer Access等でプログラムが停止した時「プログラムが動作を停止しました」としか出てこなくてわけがわかりません。しかしgdbというデバッガを経由して起動してあげると「どこが悪いのか」や「どうしてソレが悪いのか」「その時の変数がどうなっているか」が一瞬でわかります。  
+実行ファイルがあるディレクトリに移動して、`gdb sim.exe`で起動できます。デバッガがごちゃごちゃ準備をするので完了したら`r`で起動しましょう。
