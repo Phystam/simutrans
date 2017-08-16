@@ -47,15 +47,22 @@ http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.1-mingw32.zip か�
 `cd /c/users/himeshi/desktop/simutrans`  
 5. config.defaultを作る。以下の記述をエディタにコピペし、ソースコードフォルダ（のトップディレクトリ）に「config.default」という名前で保存する。  
 
-    BACKEND = gdi #どのライブラリ  
-    COLOUR_DEPTH =16#このまま使う  
-    OSTYPE = mingw #winはmingwです  
-    DEBUG = 3 #ログをたくさん出す  
-    WITH_REVISION = 8128 #バージョン。とりあえずテキトーでよい。  
-    WIN32_CONSOLE = 1  
+    #どのライブラリ  
+    BACKEND = gdi  
+    #このまま使う  
+    COLOUR_DEPTH =16  
+    #winはmingwです  
+    OSTYPE = mingw  
+    #ログをたくさん出す  
+    DEBUG = 3  
+    #バージョン。とりあえずテキトーでよい。  
+    WITH_REVISION = 8128  
     #winでコマンドプロンプトを出す  
-    MULTI_THREAD = 1 #マルチスレッドON  
-    STATIC = 1 #Windowsでのみ書く  
+    WIN32_CONSOLE = 1  
+    #マルチスレッドON  
+    MULTI_THREAD = 1  
+    #Windowsでのみ書く  
+    STATIC = 1  
     #以下はよくわからないおまじない  
     MAKEOBJ_PROGDIR = $(shell pwd)  
     NETTOOL_PROGDIR = $(shell pwd)  
